@@ -46,4 +46,12 @@ abstract class Cms_Controller_Basket extends Controller_Builder_Template_Applica
     
     Request::redirect_initial(Route::get('basket')->uri());
   }
+  
+  public function action_block_small()
+  {
+    $basket = Basket::instance();
+    
+    $this->_view->count = $basket->get_count_items();
+    $this->_view->price = $basket->get_items_price(TRUE);
+  }
 }

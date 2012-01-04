@@ -18,6 +18,9 @@ class Cms_Model_Order_Item extends ORM
   
   public function set_product($product)
   {
+    // chceme ziskat nazvy v hlavnim jazyce
+    $product->multilang_fields_enabled = FALSE;
+    
     $this->product_id = $product->id;
     $this->code = $product->code;
     $this->name = $product->name;

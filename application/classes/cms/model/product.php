@@ -4,6 +4,8 @@ class Cms_Model_Product extends ORM
 {
   protected $_belongs_to = array ('product_category' => array (), 'vat_rate' => array ());
   
+  protected $_sorting = array ('sequence' => 'DESC');
+  
   public function __get($column)
   {
     switch ($column) {
@@ -81,5 +83,10 @@ class Cms_Model_Product extends ORM
     }
     
     return $res;
+  }
+  
+  public function has_discount()
+  {
+    return (bool) ($this->discount > 0);
   }
 }

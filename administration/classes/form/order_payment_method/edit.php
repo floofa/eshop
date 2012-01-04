@@ -10,7 +10,7 @@ class Form_Order_Payment_Method_Edit extends Forms_List
       ->add('sys_name')
       ->add('payment_type', 'select', array ('options' => ___('payment_types')))
       ->add('description')
-      ->add('order_delivery_methods', 'select', array ('value' => ORM::factory('order_payment_method', $this->_model_id)->order_delivery_methods->select_list('id', 'name'), 'options' => ORM::factory('order_delivery_method')->find_all()->as_array('id', 'name'), 'attr' => array ('multiple' => 'multiple')))
+      ->add('order_delivery_methods', 'select', array ('value' => ORM::factory('order_payment_method', $this->_model_id)->order_delivery_methods->select_list('id', 'id'), 'options' => ORM::factory('order_delivery_method')->find_all()->as_array('id', 'name'), 'attr' => array ('multiple' => 'multiple')))
       ->add('cms_status', 'bool', TRUE);
     
     $this->col('col2')

@@ -8,11 +8,13 @@ class Cms_Model_Product extends ORM_Classic
   
   protected $_form_numeric_fields = array ('price_without_vat');
   
+  protected $_sorting = array ('sequence' => 'DESC');
+  
   public function __get($column)
   {
     switch ($column) {
       case 'price_final' :
-        return (Kohana::$config->load('cms.eshop.displayed_price_with_vat')) ? $this->price_final_with_vat : $this->price_final_without_vat;
+        return (Kohana::$config->load('cms.eshop.calculate_price_with_vat')) ? price_final_without_vat : $this->price_final_with_vat;
     }
     
     return parent::__get($column);

@@ -46,9 +46,16 @@ class Cms_Model_Vat_Rate extends ORM_Classic
   * @param mixed $price_with_vat
   * @return float
   */
-  public function calculate_price_without_vat($price_with_vat)
+  public function calculate_price_without_vat($price_with_vat, $vat_rate = FALSE)
   {
-    $vat = $price_with_vat * $this->coefficient_without_vat;
+    if ($this->loaded()) {
+      $coeff = $this->coefficient_without_vat;
+    }
+    else {
+      $coeff = round($vat_rate / (100 + $vat_rate), 4);
+    }
+    
+    $vat = $price_with_vat * $coeff;
     return round($price_with_vat - $vat, 2);
   }
   
@@ -58,9 +65,16 @@ class Cms_Model_Vat_Rate extends ORM_Classic
   * @param mixed $price_with_vat
   * @return float
   */
-  public function calculate_price_with_vat($price_without_vat)
+  public function calculate_price_with_vat($price_without_vat, $vat_rate = FALSE)
   {
-    $vat = $price_without_vat * $this->coefficient_with_vat;
+    if ($this->loaded()) {
+      $coeff = $this->coefficient_with_vat;
+    }
+    else {
+      $coeff = round($vat_rate->value / 100, 2);
+    }
+    
+    $vat = $price_without_vat * $coeff;
     return round($price_without_vat + $vat, 2);
   }
 }

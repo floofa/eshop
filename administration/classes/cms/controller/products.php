@@ -2,6 +2,6 @@
 
 class Cms_Controller_Products extends Controller_Builder_Template_Administration_Classic
 {                 
-  
+  protected $_list_drag = TRUE;
 }
 

@@ -2,6 +2,13 @@
 
 return array
 (
+  // plural
+  'items' => array (
+    'one' => ':count položka',
+    'few' => ':count položky',
+    'other' => ':count položek',
+  ),
+
   // nakup - osobni udaje
   'form_purchase_personal_data_field_name' => 'Jméno',
   'form_purchase_personal_data_field_surname' => 'Příjmení',

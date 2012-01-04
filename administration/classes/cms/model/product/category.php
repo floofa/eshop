@@ -2,6 +2,8 @@
 
 class Cms_Model_Product_Category extends ORM_Classic 
 {
+  protected $_has_many = array ('products' => array ());
+  
   protected $rew_id_set = FALSE;
   
   public function set_unique_value($field, $value, $sep = '-')

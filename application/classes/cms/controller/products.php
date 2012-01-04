@@ -64,7 +64,7 @@ abstract class Cms_Controller_Products extends Controller_Builder_Template_Appli
     $allowed_categories_ids = array($category->id => $category->id) + $category->get_descendants_ids();
     
     // produkty
-    $pagination = Pagination::factory(array ('total_items' => ORM::factory('product')->where('product_category_id', 'IN', $allowed_categories_ids)->set_show_conditions()->get_count_all()));
+    $pagination = Pagination::factory(array ('group' => 'products', 'total_items' => ORM::factory('product')->where('product_category_id', 'IN', $allowed_categories_ids)->set_show_conditions()->get_count_all()));
     $products = ORM::factory('product')->where('product_category_id', 'IN', $allowed_categories_ids)->set_show_conditions()->list_all($pagination->items_per_page, $pagination->offset);
     
     $this->_view->set('category', $category)

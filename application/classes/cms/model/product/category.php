@@ -14,11 +14,11 @@ class Cms_Model_Product_Category extends ORM
     return $res;
   }
   
-  public function get_url()
+  public function get_url($protocol = NULL)
   {
-    $uri = ORM::factory('product_categorymptt', $this->id)->get_uri();
+    $full_rew_id = ORM::factory('product_categorymptt', $this->id)->get_uri();
     
-    return Route::url('products-list', array ('rew_id' => $uri));
+    return Route::url('products-list', array ('rew_id' => $full_rew_id), $protocol);
   }
   
   /**

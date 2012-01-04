@@ -57,9 +57,9 @@ return array
   'list_vat_rate_new_button' => 'Nová sazba',
   'list_vat_rate_fields' => array ('name' => 'Název', 'value' => 'Hodnota [%]'),
   
-  // orders
+  // objednavky
   'list_order_heading' => 'Objednávky',
-  'list_order_fields' => array ('id' => 'ID', 'date' => 'Datum', 'full_name' => 'Zákazník', 'total_price' => 'Cena', 'payment_state' => 'Platba', 'state' => 'Stav'),
+  'list_order_fields' => array ('id' => 'ID', 'date' => 'Datum', 'full_name' => 'Zákazník', 'total_price' => 'Cena', 'payment_state' => 'Stav platby', 'state' => 'Stav obj.'),
   
   'orders_states' => array ('0' => 'Nová', '1' => 'Přijatá', '2' => 'Připravena k odeslání', '3' => 'Odeslaná', '4' => 'Zrušená'),
   'orders_payment_states' => array ('0' => 'Nezaplacená', '1' => 'Zaplacená'),
@@ -209,10 +209,11 @@ return array
   'form_order_item_edit_group_group3' => 'Vložení nového produktu',
   'form_order_item_edit_field_name' => 'Název',
   'form_order_item_edit_field_code' => 'Kód',
+  'form_order_item_edit_field_price_with_vat' => 'Cena s DPH',
   'form_order_item_edit_field_price_without_vat' => 'Cena bez DPH',
   'form_order_item_edit_field_vat_rate' => 'Sazba DPH [%]',
   'form_order_item_edit_field_count' => 'Počet kusů',
-  'form_order_item_edit_field_product_code' => 'Kód nového produktu',
+  'form_order_item_edit_field_product_id' => 'Produkt',
   
   // edit order delivery
   'form_order_editdeliverymethod_heading' => 'Způsob dopravy',
