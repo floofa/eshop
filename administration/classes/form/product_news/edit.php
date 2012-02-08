@@ -7,7 +7,7 @@ class Form_Product_News_Edit extends Forms_List
     $this->group('group1')->col('col1');
     
     if ( ! $this->_model_id) {
-      $this->add('product_code');
+      $this->add('product_id', 'selectchosen', array ('options' => array ('' => '--- Vyberte ---') + ORM::factory('product')->find_all()->as_array('id', 'name')));
     }
     else {
       $product_news = $this->_load_orm_object();
@@ -22,9 +22,9 @@ class Form_Product_News_Edit extends Forms_List
   public function set_rules()
   {
     if ( ! $this->_model_id) {
-      $this->rules('product_code', array (
+      $this->rules('product_id', array (
         array ('not_empty'),
-        array (array ($this, 'exists'), array (':value', 'code', 'product')),
+        array (array ($this, 'exists'), array (':value', 'id', 'product')),
       ));
     }
   }
@@ -33,15 +33,8 @@ class Form_Product_News_Edit extends Forms_List
   {
     $values = parent::prepare_values();
     
-    // nastavi id produktu
-    if ( ! $this->_model_id) {
-      $values['product_id'] = ORM::factory('product')->where('code', '=', $values['product_code'])->find()->id;
-      unset($values['product_code']);
-    }
-    else {
-      unset($values['product_name']);
-    }
-    
+    unset($values['product_name']);
+        
     return $values;
   }
 }

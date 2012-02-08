@@ -23,7 +23,7 @@ class Form_Order_Payment_Method_Edit extends Forms_List
   {
     $this->rules('name', array (
       array ('not_empty'),
-      array ('max_length', array (':value', 30)),
+      array ('max_length', array (':value', 50)),
     ));
     
     $this->rules('description', array (

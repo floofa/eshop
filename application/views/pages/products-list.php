@@ -1,15 +1,13 @@
-<h1><a href="<?=$category_link?>"><?=$category->name?></a></h1>
+<h1><?=$category->name?></h1>
 
 <?if (strlen($category->description)):?>
   <p><?=$category->description?></p>
 <?endif;?>
 
 <?if (count($products)):?>
-  <div class="product-list">
+  <div class="list-products">
     <?foreach ($products as $key => $product):?>
-    <?//cms::i($product->id)?>
-      <?=Request::factory(Route::get('products-block_list_product')->uri(array ('id' => $product->id, 'last' => (($key + 1) % 3 == 0))))->execute()?>
-      <?//=Request::factory('products/product_in_list/' . $product->id)->post(array ('last' => (($key + 1) % 3 == 0)))->execute()?>
+      <?=Request::factory('static_eshop/list_product/' . $product->id)->query(array ('last' => (($key + 1) % 3 == 0)))->execute()?>
     <?endforeach;?>
   </div>
   

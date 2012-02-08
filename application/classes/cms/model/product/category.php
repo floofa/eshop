@@ -2,6 +2,40 @@
 
 class Cms_Model_Product_Category extends ORM 
 {
+  public function get_top_items()
+  {
+    $ids = array ();
+    
+    foreach (ORM::factory('product_categorymptt')->get_root(1)->children as $category_mptt) {
+      if ($category_mptt->cms_status) {
+        $ids[$category_mptt->id] = $category_mptt->id;
+      }
+    }
+    
+    if ( ! count($ids)) {
+      $ids = array (-1);
+    }
+    
+    return ORM::factory('product_category')->where('id', 'IN', $ids)->order_by(DB::expr('FIELD(id,'.implode(',', $ids).')'))->find_all();
+  }
+  
+  public function get_children()
+  {
+    $ids = array ();
+    
+    foreach (ORM::factory('product_categorymptt', $this->id)->children as $category_mptt) {
+      if ($category_mptt->cms_status) {
+        $ids[$category_mptt->id] = $category_mptt->id;
+      }
+    }
+    
+    if ( ! count($ids)) {
+      $ids = array (-1);
+    }
+    
+    return ORM::factory('product_category')->where('id', 'IN', $ids)->order_by(DB::expr('FIELD(id,'.implode(',', $ids).')'))->find_all();
+  }
+  
   public function get_descendants_ids()
   {
     $res = array ();
@@ -14,7 +48,7 @@ class Cms_Model_Product_Category extends ORM
     return $res;
   }
   
-  public function get_url($protocol = NULL)
+  public function get_url($protocol = TRUE)
   {
     $full_rew_id = ORM::factory('product_categorymptt', $this->id)->get_uri();
     

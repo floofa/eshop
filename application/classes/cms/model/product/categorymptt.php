@@ -2,9 +2,9 @@
 
 class Cms_Model_Product_CategoryMPTT extends ORM_MPTT
 {
-  public $_table_name = 'product_categories';
+  protected $_table_name = 'product_categories';
   
-  public $scope_column = 'scope';
+  protected $_scope_value = 1;
  
  /* 
   public function get_root_id()

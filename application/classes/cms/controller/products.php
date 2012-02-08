@@ -114,7 +114,9 @@ abstract class Cms_Controller_Products extends Controller_Builder_Template_Appli
     $this->_set_navigation($categories, $product);
     
     $this->_view->set('product', $product)
-                ->set('product_images', $product->get_gallery_items());
+                ->set('product_images', $product->get_gallery_items())
+                ->set('categories', $categories)
+                ->set('similar_products', $product->get_similar_products());
     
     
   }

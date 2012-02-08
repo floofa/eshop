@@ -12,7 +12,7 @@ return array (
     'free_delivery' => 1500,
     
     // input pro prihlaseni k newletteru pri objednavce
-    'signup_newsletter_enabled' => FALSE,
+    'signup_newsletter_enabled' => TRUE,
     
     // automaticke prepocitavani kusu skladem
     'auto_manipulation_with_stock' => FALSE,

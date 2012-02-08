@@ -78,7 +78,7 @@ class Cms_Model_Product extends ORM
     
     if ($mptt_category->loaded()) {
       foreach ($mptt_category->get_parents(FALSE, TRUE) as $mptt_category) {
-        $res[$mptt_category->id] = ORM::factory('product_category', $mptt_category->id);
+        $res[] = ORM::factory('product_category', $mptt_category->id);
       }
     }
     
@@ -88,5 +88,39 @@ class Cms_Model_Product extends ORM
   public function has_discount()
   {
     return (bool) ($this->discount > 0);
+  }
+  
+  public function get_similar_products($count = 3)
+  {
+    $products = ORM::factory('product')
+      ->where('product_category_id', '=', $this->product_category_id)
+      ->where('id', '!=', $this->id)
+      ->set_show_conditions()
+      ->limit($count)
+      ->find_all();
+      
+    return $products;
+  }
+  
+  public function get_recommended($count = 3)
+  {
+    $ids = ORM::factory('product_recommended')->where('cms_status', '=', 1)->find_all()->as_array('product_id', 'product_id');
+    
+    if ( ! count($ids)) {
+      $ids = array (-1);
+    }
+    
+    return ORM::factory('product')->where('id', 'IN', $ids)->set_show_conditions()->order_by(DB::expr('FIELD(id,' . implode(',', $ids) . ')'))->limit($count)->find_all();
+  }
+  
+  public function get_news($count = 3)
+  {
+    $ids = ORM::factory('product_news')->where('cms_status', '=', 1)->find_all()->as_array('product_id', 'product_id');
+    
+    if ( ! count($ids)) {
+      $ids = array (-1);
+    }
+    
+    return ORM::factory('product')->where('id', 'IN', $ids)->set_show_conditions()->order_by(DB::expr('FIELD(id,' . implode(',', $ids) . ')'))->limit($count)->find_all();
   }
 }

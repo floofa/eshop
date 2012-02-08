@@ -10,7 +10,7 @@ return array
   'cms_menu_eshop_module_products' => 'Produkty',
   'cms_menu_eshop_module_product_categories' => 'Kategorie produktů',
   'cms_menu_eshop_module_vat_rates' => 'Sazby DPH',
-  'cms_menu_eshop_module_product_recomended' => 'Doporučené produkty',
+  'cms_menu_eshop_module_product_recommended' => 'Doporučené produkty',
   'cms_menu_eshop_module_product_news' => 'Nové produkty',
   
   'navigation_section_eshop' => 'Eshop',
@@ -22,7 +22,7 @@ return array
   'navigation_categories' => 'Kategorie',
   'navigation_vat_rates' => 'Sazby DPH',
   'navigation_product_categories' => 'Kategorie produktů',
-  'navigation_product_recomended' => 'Doporučené produkty',
+  'navigation_product_recommended' => 'Doporučené produkty',
   'navigation_product_news' => 'Nové produkty',
   'navigation_order_delivery_methods' => 'Způsoby dodání',
   'navigation_order_payment_methods' => 'Způsoby plateb',
@@ -83,10 +83,10 @@ return array
   'list_order_payment_method_new_button' => 'Nový způsob platby',
   'list_order_payment_method_fields' => array ('name' => 'Název', 'price' => 'Cena s DPH', 'cms_status' => 'Zobrazit'),
   
-  // produkty v akci
-  'list_product_recomended_heading' => 'Produkty v akci na HP',
-  'list_product_recomended_new_button' => 'Přidat produkt',
-  'list_product_recomended_fields' => array ('product_code' => 'Kód produktu', 'product_name' => 'Název produktu', 'cms_status' => 'Zobrazit'),
+  // doporucene produkty
+  'list_product_recommended_heading' => 'Doporučené produkty',
+  'list_product_recommended_new_button' => 'Přidat produkt',
+  'list_product_recommended_fields' => array ('product_code' => 'Kód produktu', 'product_name' => 'Název produktu', 'cms_status' => 'Zobrazit'),
   
   // nove produkty
   'list_product_news_heading' => 'Nové produkty na HP',
@@ -135,15 +135,15 @@ return array
   'form_vat_rate_edit_field_name' => 'Název',
   'form_vat_rate_edit_field_value' => 'Hodnota [%]',
   
-  // edit product action
-  'form_product_recomended_edit_heading' => 'Editace produktu v akci na HP',
-  'form_product_recomended_edit_field_product_code' => 'Kód produktu',
-  'form_product_recomended_edit_field_product_name' => 'Název produktu',
-  'form_product_recomended_edit_field_cms_status' => 'Zobrazit',
+  // edit product recommended
+  'form_product_recommended_edit_heading' => 'Editace doporučeného produktu',
+  'form_product_recommended_edit_field_product_id' => 'Název produktu',
+  'form_product_recommended_edit_field_product_name' => 'Název produktu',
+  'form_product_recommended_edit_field_cms_status' => 'Zobrazit',
   
   // edit product news
   'form_product_news_edit_heading' => 'Editace nového produktu na HP',
-  'form_product_news_edit_field_product_code' => 'Kód produktu',
+  'form_product_news_edit_field_product_id' => 'Kód produktu',
   'form_product_news_edit_field_product_name' => 'Název produktu',
   'form_product_news_edit_field_cms_status' => 'Zobrazit',
   
